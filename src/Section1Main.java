@@ -10,7 +10,7 @@ public class Section1Main {
     public static void main(String[] args) throws FileNotFoundException {
        
         // TODO: write Scanner declaration here
-        Scanner in = null;
+        Scanner in = new Scanner(new File(args[0]));
         
         //Stores the HashMap created by countDepartures for later printing
         HashMap<String, Integer> flights = countDepartures(in);
@@ -21,6 +21,9 @@ public class Section1Main {
         Collections.sort(airportsSorted);
 
         //TODO: Loop over HashMap and print 
+        for (String key : flights.keySet()) {
+            System.out.println("key, value= " + key + ": " + flights.get(key));
+        }
 
     }
 
@@ -39,7 +42,11 @@ public class Section1Main {
         HashMap<String, Integer> airportToNumFlights = new HashMap<String, Integer>();
 
         // TODO: HashMap write code here
-        
+        while (in.hasNextLine()) {
+            String[] line = in.nextLine().split(" ");
+            int num = Integer.valueOf(line[1]);
+            airportToNumFlights.put(line[0], num);
+        }
 
         return airportToNumFlights;
     }
