@@ -22,7 +22,7 @@ public class Section1Main {
 
         //TODO: Loop over HashMap and print 
         for (String key : flights.keySet()) {
-            System.out.println("key, value= " + key + ": " + flights.get(key));
+            System.out.println(key + " - " + flights.get(key));
         }
 
     }
@@ -42,10 +42,16 @@ public class Section1Main {
         HashMap<String, Integer> airportToNumFlights = new HashMap<String, Integer>();
 
         // TODO: HashMap write code here
+        in.nextLine();
         while (in.hasNextLine()) {
-            String[] line = in.nextLine().split(" ");
-            int num = Integer.valueOf(line[1]);
-            airportToNumFlights.put(line[0], num);
+            String[] line = in.nextLine().split(",");
+            String code = line[2];
+            if (airportToNumFlights.get(code) == null) {
+                airportToNumFlights.put(code, 1);
+            } else {
+                airportToNumFlights.put(code,
+                        airportToNumFlights.get(code) + 1);
+            }
         }
 
         return airportToNumFlights;
