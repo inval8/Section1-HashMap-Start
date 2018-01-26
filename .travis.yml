@@ -4,4 +4,4 @@ script: ./grade.sh Section1Main PublicTestCases
 
 notifications:
   on_success: always
-  email: your.github.email@whatever.domain
+  email: alvinquanthai@gmail.com
